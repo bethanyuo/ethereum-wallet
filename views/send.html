@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="contrainer">
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">Academy Wallet</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="/create">Create</a></li>
+		      <li><a href="/balance">Balance</a></li>
+		      <li class="active"><a href="/send">Send</a></li>
+		      <li><a href="/load">Load</a></li>
+		      <li><a href="/recover">Recover</a></li>
+		    </ul>
+		  </div>
+		</nav>
+
+		<% if (typeof error !== "undefined") { %>	
+			<div class="alert alert-danger">
+			   <%= error %>
+			</div>
+		<% } %>
+
+		<div class="jumbotron col-sm-12">
+
+			<div class="col-sm-12">
+				<h1 class="display-3">Send a transaction!</h1>
+				<p class="lead">Fill the form to send money </p>
+
+				<hr class="my-4">
+
+				<form class="row" method="post" enctype="application/x-www-form-urlencoded">
+
+					<div class="col-md-4 mb-3">
+						<div class="form-group">
+							<label>Your Private key</label>
+					        <input type="text" class="form-control" name="privateKey" required>
+				    	</div>
+
+				    	<div class="form-group">
+					        <label>Recipient</label>
+					        <input type="text" class="form-control" name="recipient" required>
+				    	</div>
+
+				    	<div class="form-group">
+					        <label>Amount</label>
+					        <input type="text" class="form-control" name="amount">
+				    	</div>
+
+				    	<div class="form-group">
+				        	<input type="submit" class="btn btn-defautl" value="Send">
+				    	</div>
+	     			</div>
+				</form>
+			</div>
+		</div>
+
+		<% if (typeof transactionHash !== "undefined") { %>
+		<div class="alert alert-dismissible alert-success">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <strong>Success!</strong> Your transaction hash is <a target="blank" href="https://ropsten.etherscan.io/tx/<%= transactionHash %>" class="alert-link"><%= transactionHash %></a>.
+		</div>
+		<% } %>
+</div>
+</body>
+</html>

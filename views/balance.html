@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="contrainer">
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">Academy Wallet</a>
+		    </div>
+
+		    <ul class="nav navbar-nav">
+		      <li><a href="/create">Create</a></li>
+		      <li class="active"><a href="/balance">Balance</a></li>
+		      <li><a href="/send">Send</a></li>
+		      <li><a href="/load">Load</a></li>
+		      <li><a href="/recover">Recover</a></li>
+		    </ul>
+
+		  </div>
+		</nav>
+
+		<% if (typeof error !== "undefined") { %>	
+			<div class="alert alert-danger">
+			   <%= error %>
+			</div>
+		<% } %>
+
+		<div class="jumbotron col-sm-12">
+			<div class="col-sm-1"></div>
+			<h1 class="display-3">Check Balance!</h1>
+			<p class="lead">Balance of all accounts </p>
+				  
+
+			<form method="post" class="row" enctype="application/x-www-form-urlencoded">
+
+				<div class="col-md-4 mb-3">
+					<div class="form-group">
+						<label>File location</label>
+						<input type="text" class="form-control" name="filename" required>
+					</div>
+
+					<div class="form-group">
+						<label>Password</label>
+						<input type="password" class="form-control" name="password" required>
+					</div>
+
+					<div class="form-group">
+						<input type="submit" class="btn btn-defautl">
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="row"></div>
+		<% if (typeof wallets !== "undefined") { %>
+		<div class="row">
+			<div class="col-sm-6">
+				<h4>Public keys</h4>
+				<ul class="list-group">
+					<% for (var i = 0; i < wallets.length; i++) { %>
+						<li class="list-group-item"><%= wallets[i].keypair.address %>(<%= wallets[i].balance %> ETH)</li>
+					<% } %>
+				</ul>
+			</div>
+
+			<div class="col-sm-6">
+				<h4>Private keys</h4>
+				<ul class="list-group">
+					<% for (var i = 0; i < wallets.length; i++) { %>
+						<li class="list-group-item"><%= wallets[i].keypair.privateKey %></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+		<% } %>
+</div>
+</body>
+</html>
