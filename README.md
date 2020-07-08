@@ -7,7 +7,7 @@ Create an Ethereum wallet with JavaScript and ethers.js libraries. Install sever
 * ethers – Library for interacting with the Ethereum blockchain
 
 ## Network
-Ropsten Testnet
+Ropsten Testnet with [Infura](https://infura.io/)
 
 ## Port
 Application runs on `localhost:3000`
